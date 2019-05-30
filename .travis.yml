@@ -10,28 +10,11 @@
          - cmake .
          - cmake --build .
          - cmake --build . --target package
- after_success:         
-#         cd $TRAVIS_BUILD_DIR
-         echo 'Generating Doxygen code documentation...'
-        # Redirect both stderr and stdout to the log file AND the console.
-         doxygen doc/Doxyfile 2>&1 | tee doxygen.log
+         - doxygen doc/Doxyfile 2>&1 | tee doxygen.log
 
  deploy:
          provider: script
          skip_cleanup: true
          script:
            - curl -T print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ualexisvabel:$BINTRAY_API_KEY "https://api.bintray.com/content/alexisvabel/otus-cpp/homework/$TRAVIS_BUILD_NUMBER/home/travis/build/AlexisVaBel/otus-cpp-hw_04/print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=xenial;deb_component=main;deb_architecture=amd64;publish=1"
-
-# deploy:
-
-#         provider: script
-#         skip_cleanup: true
-#         script:
-#           - curl -T print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ualexisvabel:$BINTRAY_API_KEY "https://api.bintray.com/content/alexisvabel/otus-cpp/homework/$TRAVIS_BUILD_NUMBER/home/travis/build/AlexisVaBel/otus-cpp-hw_04/print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=xenial;deb_component=main;deb_architecture=amd64;publish=1"
-#        # provider: pages         
-#        # github_token: $GITHUB_TOKEN
-#        # keep_history: true
-#        # local-dir: doc/html
-#        # on:
-#        #   branch: master
 
