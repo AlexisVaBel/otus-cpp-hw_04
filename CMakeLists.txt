@@ -1,17 +1,18 @@
 cmake_minimum_required(VERSION 3.5)
 set (CMAKE_CXX_STANDARD 14)
 
+project(print_ip)
 
 if ($ENV{TRAVIS_BUILD_NUMBER})
- project(ip_filter VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
+ project(${PROJECT_NAME} VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 else ($ENV{TRAVIS_BUILD_NUMBER})
- project(ip_filter  VERSION 0.0.1)
+ project(${PROJECT_NAME}  VERSION 0.0.1)
 endif ($ENV{TRAVIS_BUILD_NUMBER})
 
 find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 
-project(print_ip)
+
 include_directories(".")
 add_executable(${PROJECT_NAME} main.cpp)
 
