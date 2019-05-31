@@ -9,7 +9,7 @@
      * Description: Just printing ip address
      * Created: 2019
      * Copyright: (C) ------
-     * Author: lebllex akka Abel
+     * @Author: lebllex akka Abel
      * Email: alexisvabel@gmail.com
 ******************************************************************************/
 
@@ -21,7 +21,11 @@ static const long  L_SOME_VALUE             = 8875824491850138409;
 static const std::string STR_SOME_VALUE     = "8.8.8.8";
 
 
-
+/**
+ * @brief struct for detecting vector or list
+ * as std::vector<T, allocator> - so used <T, ... Args>
+ *
+ */
 template <typename T>
 struct  having_tail :  std::false_type  { } ;
 
@@ -31,12 +35,18 @@ struct  having_tail <std::vector<T , Args ...>>  :  std::true_type  { } ;
 template <typename T ,  typename ... Args>
 struct  having_tail <std::list<T , Args ...>>    :  std::true_type  {} ;
 
+/**
+ * @brief basic template for non vector or list
+ * and not for integral
+ */
 template <typename T>
 typename std::enable_if_t <!having_tail<T>::value> print_ip(T t){
     std::cerr << "nothing implemented here" << std::endl;
 }
-//for ints chars and so on
-// char 0xFF -
+
+/**
+ * @brief basic template for integral type - char, short, int, long...
+ */
 template <typename T>
 void print_ip(std::enable_if_t <std::is_integral<T>::value,T> t){
     size_t size = sizeof (T);
@@ -47,13 +57,17 @@ void print_ip(std::enable_if_t <std::is_integral<T>::value,T> t){
     std::cout << std::endl;
 }
 
-// for strings
+/**
+ * @brief basic template for strings
+ */
 template<>
 void print_ip<std::string>(std::string str){
     std::cout <<str <<std::endl;
 }
 
-//for vectors and lists
+/**
+ * @brief basic template for vector or lists
+ */
 template <typename U>
 typename std::enable_if_t <having_tail<U>::value> print_ip(U t){
     for(auto it = t.begin(); it != t.end(); ++it){
@@ -63,8 +77,22 @@ typename std::enable_if_t <having_tail<U>::value> print_ip(U t){
     }
     std::cout << std::endl;
 }
-// tuple .. not enough time
+/**
+ * @brief tuple not used (
+ */
 
+
+/**
+ * @brief Entry point (main)
+ *
+ * Execution of the program
+ * starts here.
+ *
+ * @param argc Number of arguments - not used
+ * @param argv List of arguments - not used
+ *
+ * @return Program exit status
+ */
 int main(int argc, char ** argval)
 {    
     std::vector<int> vct;
