@@ -15,9 +15,11 @@
          - cmake .
          - cmake --build .
          - cmake --build . --target package
+         - doxygen Doxyfile 2>&1 | tee doxygen.log
 after_success:
          - cd $TRAVIS_BUILD_DIR
-         - doxygen doc/Doxyfile 2>&1 | tee doxygen.log
+         - echo 'Uploading documentation to the gh-pages branch...'
+         - doxygen Doxyfile 2>&1 | tee doxygen.log
          if [ -d "html" ] && [ -f "html/index.html" ]; then
              echo 'Uploading documentation to the gh-pages branch...'
              git add --all
