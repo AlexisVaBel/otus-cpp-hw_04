@@ -103,6 +103,7 @@ Include dependency graph for main.cpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhaving__tail.html">having_tail&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">struct for detecting vector or list as std::vector&lt;T, allocator&gt; - so used &lt;T, ... Args&gt;  <a href="structhaving__tail.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhaving__tail_3_01std_1_1vector_3_01T_00_01Args_8_8_8_01_4_01_4.html">having_tail&lt; std::vector&lt; T, Args... &gt; &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,17 +114,22 @@ Classes</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:ad9f8622870287500f37f0f07268cc263"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ad9f8622870287500f37f0f07268cc263"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt;!<a class="el" href="structhaving__tail.html">having_tail</a>&lt; T &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ad9f8622870287500f37f0f07268cc263">print_ip</a> (T t)</td></tr>
+<tr class="memdesc:ad9f8622870287500f37f0f07268cc263"><td class="mdescLeft">&#160;</td><td class="mdescRight">basic template for non vector or list and not for integral  <a href="#ad9f8622870287500f37f0f07268cc263">More...</a><br /></td></tr>
 <tr class="separator:ad9f8622870287500f37f0f07268cc263"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28603831d675cd60748bd23a0502866d"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a28603831d675cd60748bd23a0502866d"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a28603831d675cd60748bd23a0502866d">print_ip</a> (std::enable_if_t&lt; std::is_integral&lt; T &gt;::value, T &gt; t)</td></tr>
+<tr class="memdesc:a28603831d675cd60748bd23a0502866d"><td class="mdescLeft">&#160;</td><td class="mdescRight">basic template for integral type - char, short, int, long...  <a href="#a28603831d675cd60748bd23a0502866d">More...</a><br /></td></tr>
 <tr class="separator:a28603831d675cd60748bd23a0502866d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9a6a192c30c6380dad6b70e26951250"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
 <tr class="memitem:ab9a6a192c30c6380dad6b70e26951250"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ab9a6a192c30c6380dad6b70e26951250">print_ip&lt; std::string &gt;</a> (std::string str)</td></tr>
+<tr class="memdesc:ab9a6a192c30c6380dad6b70e26951250"><td class="mdescLeft">&#160;</td><td class="mdescRight">basic template for strings  <a href="#ab9a6a192c30c6380dad6b70e26951250">More...</a><br /></td></tr>
 <tr class="separator:ab9a6a192c30c6380dad6b70e26951250"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abded9d532547e405a42f780e53e978de"><td class="memTemplParams" colspan="2">template&lt;typename U &gt; </td></tr>
 <tr class="memitem:abded9d532547e405a42f780e53e978de"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if_t&lt; <a class="el" href="structhaving__tail.html">having_tail</a>&lt; U &gt;::value &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="main_8cpp.html#abded9d532547e405a42f780e53e978de">print_ip</a> (U t)</td></tr>
+<tr class="memdesc:abded9d532547e405a42f780e53e978de"><td class="mdescLeft">&#160;</td><td class="mdescRight">basic template for vector or lists  <a href="#abded9d532547e405a42f780e53e978de">More...</a><br /></td></tr>
 <tr class="separator:abded9d532547e405a42f780e53e978de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a240f8874a349410929916667acc0ba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a9a240f8874a349410929916667acc0ba">main</a> (int argc, char **argval)</td></tr>
+<tr class="memdesc:a9a240f8874a349410929916667acc0ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">tuple not used (  <a href="#a9a240f8874a349410929916667acc0ba">More...</a><br /></td></tr>
 <tr class="separator:a9a240f8874a349410929916667acc0ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -151,6 +157,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>tuple not used ( </p>
+<p>Entry point (main)</p>
+<p>Execution of the program starts here.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>Number of arguments - not used </td></tr>
+    <tr><td class="paramname">argv</td><td>List of arguments - not used</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Program exit status </dd></dl>
+
 </div>
 </div>
 <a class="anchor" id="ad9f8622870287500f37f0f07268cc263"></a>
@@ -168,6 +186,8 @@ template&lt;typename T &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>basic template for non vector or list and not for integral </p>
 
 </div>
 </div>
@@ -187,6 +207,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>basic template for integral type - char, short, int, long... </p>
+
 </div>
 </div>
 <a class="anchor" id="abded9d532547e405a42f780e53e978de"></a>
@@ -205,6 +227,8 @@ template&lt;typename U &gt; </div>
       </table>
 </div><div class="memdoc">
 
+<p>basic template for vector or lists </p>
+
 </div>
 </div>
 <a class="anchor" id="ab9a6a192c30c6380dad6b70e26951250"></a>
@@ -222,6 +246,8 @@ template&lt;&gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>basic template for strings </p>
 
 </div>
 </div>
