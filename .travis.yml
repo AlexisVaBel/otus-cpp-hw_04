@@ -21,7 +21,7 @@
            skip_cleanup: true
            github_token: $GITHUB_TOKEN
            keep_history: true
-           local-dir: $TRAVIS_BUILD_DIR/docs/html
+           local-dir: $TRAVIS_BUILD_DIR/html
            on:
             branch: master
 
