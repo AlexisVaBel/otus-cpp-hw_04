@@ -1,6 +1,11 @@
  dist: xenial
  language: cpp
  compiler: clang
+ env:
+   global:
+     - DOXYFILE: $TRAVIS_BUILD_DIR/doc/Doxyfile
+     - GH_REPO_REF: github.com/AlexisVaBel/otus-cpp-hw_04.git
+
  before_script:
          - sudo apt update
          - sudo apt install doxygen
@@ -11,17 +16,40 @@
          - cmake --build .
          - cmake --build . --target package
          - doxygen doc/Doxyfile 2>&1 | tee doxygen.log
+         if [ -d "html" ] && [ -f "html/index.html" ]; then
+
+             echo 'Uploading documentation to the gh-pages branch...'
+             # Add everything in this directory (the Doxygen code documentation) to the
+             # gh-pages branch.
+             # GitHub is smart enough to know which files have changed and which files have
+             # stayed the same and will only update the changed files.
+             git add --all
+
+             # Commit the added files with a title and description containing the Travis CI
+             # build number and the GitHub commit reference that issued this build.
+             git commit -m "Deploy code docs to GitHub Pages Travis build: ${TRAVIS_BUILD_NUMBER}" -m "Commit: ${TRAVIS_COMMIT}"
+
+             # Force push to the remote gh-pages branch.
+             # The ouput is redirected to /dev/null to hide any sensitive credential data
+             # that might otherwise be exposed.
+             git push --force "https://${GITHUB_TOKEN}@${GH_REPO_REF}" > /dev/null 2>&1
+         else
+             echo '' >&2
+             echo 'Warning: No documentation (html) files have been found!' >&2
+             echo 'Warning: Not going to push the documentation to GitHub!' >&2
+             exit 1
+         fi
 
  deploy:
-         provider: script
-         skip_cleanup: true
-         script:
+        provider: script
+        skip_cleanup: true
+        script:
            - curl -T print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ualexisvabel:$BINTRAY_API_KEY "https://api.bintray.com/content/alexisvabel/otus-cpp/homework/$TRAVIS_BUILD_NUMBER/home/travis/build/AlexisVaBel/otus-cpp-hw_04/print_ip-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=xenial;deb_component=main;deb_architecture=amd64;publish=1"
 	provider: pages         
         skip_cleanup: true
 	github_token: $GITHUB_TOKEN
 	keep_history: true
-	local-dir: doc/html
+        local-dir: html
 	on:
 	   branch: master
 
